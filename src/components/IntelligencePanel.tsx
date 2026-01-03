@@ -18,29 +18,6 @@ const IntelligencePanel: React.FC<IntelligencePanelProps> = ({ results, domain }
     return apiKey && apiKey !== '' && apiKey !== 'your_actual_api_key_here';
   };
 
-  // Function to test the AI connection
-  const testAIConnection = async () => {
-    try {
-      console.log('Testing AI connection...');
-      const response = await fetch('https://api.vultrinference.com/v1/models', {
-        headers: {
-          'Authorization': `Bearer ${process.env.REACT_APP_VULTR_INFERENCE_API_KEY}`
-        }
-      });
-      
-      if (response.ok) {
-        console.log('AI connection test successful');
-        alert('AI connection is working!');
-      } else {
-        console.error('AI connection test failed:', response.status);
-        alert(`AI connection test failed with status ${response.status}`);
-      }
-    } catch (error) {
-      console.error('AI connection test error:', error);
-      alert('AI connection test failed. Check console for details.');
-    }
-  };
-
   useEffect(() => {
     if (results.length > 0) {
       setIsLoading(true);
